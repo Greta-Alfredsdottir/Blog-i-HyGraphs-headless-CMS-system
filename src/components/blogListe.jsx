@@ -31,7 +31,7 @@ export const BlogList =() => {
     return (
       <section>
         <Typography variant="h2" gutterBottom align="center"> Blog Post </Typography>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container rowSpacing={4} columns={2*2}>
         <Grid size={2}>
         {blogs.map((blog, index) => 
         (<BlogCard key={index} blog={blog}/>
