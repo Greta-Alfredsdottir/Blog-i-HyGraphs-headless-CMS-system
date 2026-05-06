@@ -1,6 +1,11 @@
 import { useGraphQuery } from "../utils/hook";
 import { myFirstQuery } from "../utils/myfirstQuery";
 import { BlogCard } from "./cards";
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
 // error handling, skal være på 0, ellers ingen error
 
@@ -13,13 +18,26 @@ export const BlogList =() => {
     if (error) {
         return <div>Fejl ved indlæsning {error.message}</div>
     }
+    const Item = styled(Paper)(({ theme }) => ({
+            backgroundColor: '#fff',
+            ...theme.typography.body2,
+            padding: theme.spacing(1),
+            textAlign: 'center',
+            color: (theme.vars ?? theme).palette.text.secondary,
+            ...theme.applyStyles('dark', {
+            backgroundColor: '#1A2027',
+  }),
+}));
     return (
       <section>
-        <h1>Blog Post </h1>
-        <div>{blogs.map((blog, index) => 
+        <Typography variant="h2" gutterBottom align="center"> Blog Post </Typography>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid size={2}>
+        {blogs.map((blog, index) => 
         (<BlogCard key={index} blog={blog}/>
         ))}
-        </div>
+        </Grid>
+        </Grid>
       </section>
     )
 }
