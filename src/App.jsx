@@ -8,7 +8,7 @@ import {ThemeProvider, createTheme, Box, Container, CssBaseline} from '@mui/mate
 const theme = createTheme({
   palette: {
     background: {
-      default: '#f5f7fb'
+      default: '#689978'
     },
     primary: {
       main: '#1f4b99'
@@ -27,6 +27,7 @@ function App() {
   return (
     <>
     <ThemeProvider theme = {theme}>
+      <CssBaseline/>
       <Box component = "main" sx = {{py: 6}}>
         <Container maxWidth = "lg">
           <BlogList/>
