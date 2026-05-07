@@ -3,11 +3,18 @@ import { myFirstQuery } from "../utils/myfirstQuery";
 import { BlogCard } from "./cards";
 import { Box, Grid, Typography} from "@mui/material";
 
-// error handle and Loading
+// error handle and Loading Handle
 
+// her opretter vi komponenten
 export const BlogList =() => {
+  // Henter data med en hook
     const {data, isLoading, error}= useGraphQuery(myFirstQuery);
-    const blogs = data?.blogs ?? [];
+    const blogs = data?.blogs ?? []; //“Hvis data findes, så hent blogs.”
+    //Her kaldes useGraphQuery.
+    // Den returnerer typisk et object som indeholder:
+    // data → data fra API'et
+    // isLoading → om data stadig hentes
+    // error → hvis noget gik galt
     if (isLoading){
         return <div>Indlæse Blogpost</div>;
     }
@@ -15,6 +22,24 @@ export const BlogList =() => {
         return <div>Fejl ved indlæsning {error.message}</div>
     }
    const [featuredBlog, ...restBlog] = blogs;
+  // Det som sker 
+  //Komponent starter
+  //     ↓
+  //useGraphQuery henter data
+  //     ↓
+  //isLoading = true
+  //     ↓
+  //"Indlæse Blogpost" vises
+  //     ↓
+  //Data kommer tilbage
+  //     ↓
+  //blogs array oprettes
+  //     ↓
+  //Første blog gemmes som featuredBlog
+  //       ↓
+  //Resten gemmes i restBlog
+  //     ↓
+  //Komponenten renderer bloglisten
 
     return (
       <Box component = "section">

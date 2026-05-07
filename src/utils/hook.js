@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react'
 import { graphClient } from './graphClient'
 
 export const useGraphQuery = (request) => {
-  const [data, setData] = useState('')
+  // useState er en React Hook, 
+  // der bruges til at gemme og opdatere data (state) i funktionelle komponenter.
+  const [data, setData] = useState('') 
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
-
+// useEffect er en React Hook, der bruges til at køre kode, 
+// når noget sker i komponenten — fx når den loader,
+// når state ændrer sig, eller når den fjernes igen.
   useEffect(() => {
     setIsLoading(true)
     const gqlFetch = async () => {
