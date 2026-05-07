@@ -1,13 +1,9 @@
 import { useGraphQuery } from "../utils/hook";
 import { myFirstQuery } from "../utils/myfirstQuery";
 import { BlogCard } from "./cards";
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import { box, grid, Typography } from "@mui/material";
 
-// error handling, skal være på 0, ellers ingen error
+// error handle and Loading
 
 export const BlogList =() => {
     const {data, isLoading, error}= useGraphQuery(myFirstQuery);
@@ -18,26 +14,21 @@ export const BlogList =() => {
     if (error) {
         return <div>Fejl ved indlæsning {error.message}</div>
     }
-    const Item = styled(Paper)(({ theme }) => ({
-            backgroundColor: '#fff',
-            ...theme.typography.body2,
-            padding: theme.spacing(1),
-            textAlign: 'center',
-            color: (theme.vars ?? theme).palette.text.secondary,
-            ...theme.applyStyles('dark', {
-            backgroundColor: '#1A2027',
-  }),
-}));
+   const [featuredBlog, ...restBlog] = blogs;
+
     return (
-      <section>
-        <Typography variant="h2" gutterBottom align="center"> Blog Post </Typography>
-        <Grid container rowSpacing={4} columns={2*2}>
-        <Grid size={2}>
-        {blogs.map((blog, index) => 
-        (<BlogCard key={index} blog={blog}/>
-        ))}
-        </Grid>
-        </Grid>
-      </section>
+      <box component = "section">
+        <Typography variant="h3" component="h1" align="center" sx={{mb: 4, fontWeight: 700}}>Blog Posts</Typography>
+        {featuredBlog ? <BlogCard blog={featuredBlog} featured />: null}
+        {restBlog.length > 0 ?(
+          <grid container spacing={3} sx={{mt: featuredBlog ? 1 : 0}}>
+            {restBlog.map((blog, index) => (
+              <grid item xs={12} sm={6} key={`${blog.title}-${index}`}>
+                <BlogCard blog={blog}/>
+              </grid>
+            ))}
+            </grid>
+        ):null}
+      </box>
     )
 }
