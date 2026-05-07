@@ -38,7 +38,7 @@ export const BlogList =() => {
   //blogs array oprettes
   //     ↓
   //Første blog gemmes som featuredBlog
-  //       ↓
+  //     ↓
   //Resten gemmes i restBlog
   //     ↓
   //Komponenten renderer bloglisten
