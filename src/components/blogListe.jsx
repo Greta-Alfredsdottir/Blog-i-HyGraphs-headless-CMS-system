@@ -13,12 +13,14 @@ export const BlogList =() => {
     //Her kaldes useGraphQuery.
     // Den returnerer typisk et object som indeholder:
     // data → data fra API'et
-    // isLoading → om data stadig hentes
-    // error → hvis noget gik galt
+    
+   
     if (isLoading){
+      // isLoading → om data stadig hentes
         return <div>Indlæse Blogpost</div>;
     }
     if (error) {
+       // error → hvis noget gik galt
         return <div>Fejl ved indlæsning {error.message}</div>
     }
    const [featuredBlog, ...restBlog] = blogs;
