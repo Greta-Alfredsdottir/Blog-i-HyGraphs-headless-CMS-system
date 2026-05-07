@@ -1,15 +1,12 @@
-
-
 export const blogText = {
-    text: ""
-
+  text: "",
 };
 
-export const blogs ={
-    title: "",
-    text: blogText
+export const blogs = {
+  title: "",
+  text: blogText,
 };
 
 export const blogResponse = {
-    blogs: [],
-}
+  blogs: [],
+};
