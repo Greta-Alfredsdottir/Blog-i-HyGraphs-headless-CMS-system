@@ -20,14 +20,13 @@ const theme = createTheme({
 });
 
 function App() {
-  const [count, setCount] = useState(0)
+  
   const { data, isLoading, error } = useGraphQuery(myFirstQuery)
   console.log(data, isLoading, error)
 
   return (
     <>
     <ThemeProvider theme = {theme}>
-      <CssBaseline/>
       <Box component = "main" sx = {{py: 6}}>
         <Container maxWidth = "lg">
           <BlogList/>
