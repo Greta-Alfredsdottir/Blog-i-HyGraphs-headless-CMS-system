@@ -3,9 +3,9 @@ import { useGraphQuery } from "./utils/hook";
 import { myFirstQuery } from './utils/myfirstQuery';
 import { BlogCard } from "./components/cards";
 import { BlogList } from './components/blogListe';
-import {themeProvider, createTheme} from '@mui/material';
+import {ThemeProvider, createTheme, Box, Container, CssBaseline} from '@mui/material';
 
-const theme = createTheme ({
+const theme = createTheme({
   palette: {
     background: {
       default: '#f5f7fb'
@@ -26,13 +26,14 @@ function App() {
 
   return (
     <>
-    <themeProvider theme = {theme}>
-      <box component = "main" sx = {{py: 6}}>
-        <container maxWidth = "lg">
+    <ThemeProvider theme = {theme}>
+      <CssBaseline/>
+      <Box component = "main" sx = {{py: 6}}>
+        <Container maxWidth = "lg">
           <BlogList/>
-        </container>
-      </box>
-    </themeProvider>
+        </Container>
+      </Box>
+    </ThemeProvider>
     
      
     </>
