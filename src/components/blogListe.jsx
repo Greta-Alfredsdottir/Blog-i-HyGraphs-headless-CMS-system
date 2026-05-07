@@ -23,7 +23,7 @@ export const BlogList =() => {
         {restBlog.length > 0 ?(
           <Grid container spacing={3} sx={{mt: featuredBlog ? 1 : 0}}>
             {restBlog.map((blog, index) => (
-              <Grid item size={6} key={`${blog.title}-${index}`}>
+              <Grid item size={6, {xs: 12, sm:6}} key={`${blog.title}-${index}`}>
                 <BlogCard blog={blog}/>
               </Grid>
             ))}
