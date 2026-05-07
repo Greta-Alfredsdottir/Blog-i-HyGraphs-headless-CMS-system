@@ -3,6 +3,11 @@ import { blogs } from "../utils/blog";
 import { Typography, Card, CardContent } from "@mui/material";
 
 export const BlogCard = ({blog, featured = false}) => {
+    //Dette er props (input til komponenten).
+    //Komponenten forventer:
+    //blog → et objekt med data om bloggen
+    //featured → en boolean (true eller false)
+    //Hvis featured ikke sendes med, bliver den automatisk: false
   return (
         <Card component = "article" sx={{mb: featured ? 4 : 0, borderRadius: 3, boxShadow: featured ? 4 : 2, height: '100%'}}>
             <CardContent sx={{ p: 3}}>
